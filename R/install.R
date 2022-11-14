@@ -12,7 +12,7 @@
 #' @export
 install_azureml <- function(version = "1.10.0",
                             envname = "r-reticulate",
-                            conda_python_version = "3.6",
+                            conda_python_version = "3.8",
                             restart_session = TRUE,
                             remove_existing_env = FALSE) {
   main_package <- "azureml-sdk"
@@ -30,9 +30,13 @@ install_azureml <- function(version = "1.10.0",
   envs <- reticulate::conda_list()
   env_exists <- envname %in% envs$name
   if (env_exists && remove_existing_env) {
-    msg <- sprintf(paste("Environment \"%s\" already exists.",
-                         "Remove the environment..."),
-                   envname)
+    msg <- sprintf(
+      paste(
+        "Environment \"%s\" already exists.",
+        "Remove the environment..."
+      ),
+      envname
+    )
     message(msg)
     reticulate::conda_remove(envname)
     env_exists <- FALSE
@@ -51,14 +55,16 @@ install_azureml <- function(version = "1.10.0",
     envname = envname,
     method = "conda",
     conda = "auto",
-    pip = TRUE)
+    pip = TRUE
+  )
 
   cat("\nInstallation complete.\n\n")
 
   if (restart_session &&
-      rstudioapi::isAvailable() &&
-      rstudioapi::hasFun("restartSession"))
+    rstudioapi::isAvailable() &&
+    rstudioapi::hasFun("restartSession")) {
     rstudioapi::restartSession()
+  }
 
   invisible(NULL)
 }
