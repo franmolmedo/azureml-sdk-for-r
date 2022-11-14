@@ -12,11 +12,11 @@
 #' @export
 install_azureml <- function(version = "1.10.0",
                             envname = "r-reticulate",
-                            conda_python_version = "3.6",
+                            conda_python_version = "3.7",
                             restart_session = TRUE,
                             remove_existing_env = FALSE) {
   main_package <- "azureml-sdk"
-  default_packages <- c("numpy", "pandas", "certifi")
+  default_packages <- c("numpy", "pandas")
 
   # set version
   main_package <- paste(main_package, "==", version, sep = "")
