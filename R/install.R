@@ -10,9 +10,9 @@
 #' @param remove_existing_env delete the conda environment if already exists
 #' @return None
 #' @export
-install_azureml <- function(version = "1.10.0",
+install_azureml <- function(version = "1.42.0",
                             envname = "r-reticulate",
-                            conda_python_version = "3.6",
+                            conda_python_version = "3.8",
                             restart_session = TRUE,
                             remove_existing_env = FALSE) {
   main_package <- "azureml-sdk"
